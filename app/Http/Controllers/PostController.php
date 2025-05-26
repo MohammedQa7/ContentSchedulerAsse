@@ -16,13 +16,27 @@ use App\Services\PostService;
 use App\Traits\hasAttachments;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Routing\Controllers\Middleware;
 use Inertia\Inertia;
 
-class PostController extends Controller
+class PostController extends Controller implements HasMiddleware
 {
     use hasAttachments, AuthorizesRequests;
+
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            new Middleware(
+                'throttle:limit-post',
+                only: ['store']
+            ),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */

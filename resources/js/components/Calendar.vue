@@ -34,6 +34,7 @@ import { DateFormatter, parseDate, CalendarDate } from '@internationalized/date'
 
 import { watch } from 'vue'
 import { toDate } from 'radix-vue/date'
+import eventBus from '@/composables/eventBus'
 const df = new DateFormatter('en-US', { dateStyle: 'long' })
 const date = ref();
 const propsData = defineProps({
@@ -41,6 +42,9 @@ const propsData = defineProps({
 });
 const emit = defineEmits();
 
+eventBus.on('resetDateField', () => {
+    date.value = null;
+})
 watch(date, () => {
     if (date.value) {
         const formatedDate = date.value.day + '/' + date.value.month + '/' + date.value.year;

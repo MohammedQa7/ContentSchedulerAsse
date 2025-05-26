@@ -47,6 +47,7 @@ import { onMounted, ref, watch } from 'vue';
 import { debounce } from 'lodash'
 import Button from '../ui/button/Button.vue';
 import { X } from 'lucide-vue-next';
+import eventBus from '@/composables/eventBus';
 const propsData = defineProps({
     publishStatus: Object,
     filters: Array,
@@ -68,6 +69,11 @@ const submitFilter = debounce(() => {
 }, 500)
 
 const resetFields = () => {
+    filters.value = {
+        status: null,
+        date: null,
+    }
+    eventBus.emit('resetDateField')
 }
 
 watch(filters, () => {

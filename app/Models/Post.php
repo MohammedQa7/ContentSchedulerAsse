@@ -49,9 +49,11 @@ class Post extends Model
             return $query->when(isset($request['status']), function ($query) use ($request) {
                 $query->where('status', $request['status']);
             })
-
                 ->when(isset($request['date']), function ($query) use ($request) {
-                    $query->whereDate('published_at', Carbon::parse($request['date'])->format('Y/m/d'));
+                    $query->where(function ($date) use ($request) {
+                        $date->whereDate('published_at', $request['date'])
+                            ->orWhereDate('scheduled_time', $request['date']);
+                    });
                 });
         }
         return;

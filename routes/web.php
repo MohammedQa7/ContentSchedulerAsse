@@ -15,7 +15,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('posts', PostController::class)->only('index', 'create', 'store')->names('posts');
 
-    // Made this routes to solve route model binding issue becuase there is a globalScope that prevent the binding to work as expected
+    // Made this routes to solve route model binding issue becuase there is a globalScope that prevents the binding to work as expected
     Route::prefix('posts')->group(function () {
         Route::get('/{post}', [PostController::class, 'edit'])->name('posts.edit');
         Route::put('/{post}', [PostController::class, 'update'])->name('posts.update');
@@ -30,14 +30,6 @@ Route::middleware('auth')->group(function () {
 // Uploading Attachments
 Route::post('/attachments/upload', [UploadTemporatyAttachmentsController::class, 'uploadAttachments'])->name('upload');
 Route::post('/attachments/revert', [UploadTemporatyAttachmentsController::class, 'revertAttachments'])->name('revert');
-
-
-Route::get('/test', function () {
-    return Inertia::render('test');
-})->name('home');
-Route::get('/test2', function () {
-    return Inertia::render('test2');
-})->name('home');
 
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';

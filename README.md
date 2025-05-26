@@ -10,28 +10,31 @@ Clone the repository using the command below:
 git clone https://github.com/MohammedQa7/ContentSchedulerAsse.git
 ```
 
-2. Install dependencies:
+2. Install PHP Dependencies:
 ```bash
-npm install
+composer install
+ ```
+3. Set up enviroment key
+```bash
+php artisan key:generate
  ```
 
-3. Run database migrations:
+4. Run database migrations:
 ```bash
 php artisan migrate
  ```
 
-Run seeders to populate initial data:
-4. Run database migrations:
+5. Run seeders to populate initial data:
 ```bash
 php artisan db:seed
  ```
 
-4. Install Node.js dependencies:
+6. Install Node.js dependencies:
 ```bash
 npm install
  ```
 
-4. Run the frontend development server (Vite):
+7. Run the frontend development server (Vite):
 ```bash
 npm run dev
  ```

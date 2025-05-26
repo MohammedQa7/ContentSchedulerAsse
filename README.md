@@ -34,7 +34,11 @@ php artisan db:seed
 npm install
  ```
 
-7. Run the frontend development server (Vite):
+7. Run the php development server:
+```bash
+php artisan serve
+ ```
+8. Run the frontend development server (Vite):
 ```bash
 npm run dev
  ```

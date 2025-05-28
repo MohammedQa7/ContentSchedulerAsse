@@ -51,6 +51,7 @@ publish to various platforms (e.g., Facebook, LinkedIn, etc.). Users would have
 the ability to switch on/off which platforms they want to publish to, offering
 flexibility and independence.
 
+
 ### Tech Stack and Why I Chose It
 Laravel 12: Utilized as the backend framework because of its expressive syntax,
 out-of-the-box validation, job queues, and high-level ORM (Eloquent).
@@ -61,6 +62,8 @@ Inertia.js: A connector for Vue and Laravel that gives server-side routing with 
 frontend SPA-like experience and less boilerplate code.
 
 **Trade-off** : Inertia speeds up development and avoids API boilerplate but binds the frontend and backend strongly together, which can lead to inflexibility in multi- client environments (e.g., mobile apps).
+
+
 
 ### Architecture Decisions
 **Single Form to Post:** Created a dynamic form with platform toggles such that the
@@ -76,6 +79,8 @@ selection fields conditionally (e.g., Instagram, LinkedIn selection).
 complex. I simplified it by splitting form elements into smaller components and
 reusing logic wherever I could.
 
+
+
 ### Validation and Feedback
 
 Applied Laravel's form request validation to make required fields dependent on
@@ -85,6 +90,8 @@ Vue employed reactive bindings to perform live form validation and UX feedback.
 
 **Trade-off:** Conditionally validating rules depending on flipped platforms
 introduced additional logic but provided improved UX.
+
+
 
 ### Seeders
 
